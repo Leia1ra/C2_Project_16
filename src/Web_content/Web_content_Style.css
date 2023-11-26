@@ -1,0 +1,374 @@
+/* 상단 바 */
+body{
+    background-color: beige;
+}
+ul{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    list-style: none;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: black;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+    border-radius: 0.6em;
+}
+a {
+    margin-left: 0.75em;
+    margin-right: 0.75em;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    transition: 0.25s ease;
+}
+ul:hover a:not(:hover){
+    color: white;
+    opacity: 0.3;
+    filter: blur(1px);
+}
+ul:hover a:hover{
+    color: #5cdb95;
+    text-decoration:underline;
+}
+
+/* OMDb API 검색 창 */
+.OMDB_container{
+    margin-bottom: 8px;
+    font-size: 20px;
+    padding: 1.5em;
+    background-color: #1e293b;
+    border-radius: 0.6em;
+    /* width: 90vw; */
+    /* max-width: 37.5em; */
+    position: relative;
+    /* transform: translate(-50%, -50%); */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* box-shadow: 1.2em 2em 3em rgba(0, 0, 0, 0.2); */
+}
+.OMDB_search-container{
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+    gap: 1em;
+}
+.OMDB_search-container input{
+    font-size: 0.9em;
+    outline: none;
+    border-radius: 0.3em;
+    background-color: transparent;
+    border: 1px solid #a0a0a0;
+    color: #fff;
+    padding: 0.7em;
+}
+.OMDB_search-container input:focus{
+    border-color: #fff;
+}
+.OMDB_search-container button{
+    font-size: 0.9em;
+    border-radius: 0.3em;
+    background-color: #ffb92a;
+    border: none;
+    cursor: pointer;
+}
+#OMDB_result{
+    color: #fff;
+}
+.OMDB_info{
+    position: relative;
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    margin-top: 1.2em;
+}
+.OMDB_poster{
+    border-radius: 0.6em;
+    display: flex;
+    width: 400px;
+    height: 600px;
+    /* width: 75%; */
+}
+.OMDB_more-info{
+    margin-left: 10px;
+    margin-right: 10px;
+    display: grid;
+    align-content: center;
+}
+h2{
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+.OMDB_rating{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    /* justify-content: center; */
+    width: fit-content;
+    height: fit-content;
+    gap: 0.6em;
+    margin: 0.6em 0 0.6em 0;
+}
+.OMDB_rating img{
+    width: 1.2em;
+}
+.OMDB_rating h4{
+    display: inline-block;
+    margin: 0px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+
+.OMDB_details{
+    display: flex;
+    font-size: 0.95em;
+    gap: 1em;
+    justify-content: center;
+    color: #a0a0a0;
+    margin: 0.6em 0;
+    font-weight: 300;
+}
+.OMDB_genre{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.OMDB_genre div{
+    border: 1px solid #a0a0a0;
+    font-size: 0.75em;
+    padding: 0.4em 1.6em;
+    border-radius: 0.4em;
+    font-weight: 300;
+}
+
+.searched_ott{
+    margin : 20px;
+    display : flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+.searched_ott img{
+    width: 50px;
+    height: auto;
+    border-radius: 0.3em;
+}
+
+h3{
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-weight: 300;
+    line-height: 1.2em;
+    text-align: justify;
+    color: #a0a0a0;
+}
+
+
+.msg{
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .OMDB_container{
+        font-size: 14px;
+    }
+    .OMDB_poster{
+        margin: auto;
+        width: auto;
+        max-height: 10.8em;
+    }
+
+    .OMDB_info{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 사진 벌어지는거 */
+#movies-list{
+    margin: 0;
+    padding: 20px;
+    padding-left: 150px;
+    padding-right: 150px;
+    max-height: 600px;
+    background-color: #678983;
+    /* background: #333; */
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: center;
+    border-radius: 0.6em;
+}
+.poster_container{
+    width: flex;
+    position: relative;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.poster_container .card{
+    margin-right: 10px;
+    margin-left: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.poster_container .card .face{
+    width: 300px;
+    height: 400px;
+    transition: 0.5s;
+}
+.poster_container .card .face.face1{
+    border-radius: 0.6em;
+    position: absolute;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.card:hover .face.face1{
+    transform: translateX(-150px);
+    z-index: 2;
+}
+.face.face1 .poster_content img{
+    border-radius: 0.6em;
+    width: 300px;
+    height: 400px;
+    vertical-align: middle
+}
+.poster_container .card .face.face2{
+    border-radius: 0.6em;
+    position: relative;
+    background: beige;
+    /* display: flex; */
+    justify-content: center;
+    /* align-items: center; */
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+.poster_container .card:hover .face.face2{
+    transform: translateX(150px);
+    align-items: center;
+    z-index: 2;
+}
+
+/* .poster_container .card .face.face2 .poster_content h3{
+    position: absolute;
+    bottom: 10px;
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+} */
+
+h5{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position:relative;
+    font-weight: 500;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+h5 .eng{
+    font-size: 15px;
+}
+
+.rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rating img{
+    width: 25px;
+}
+.rating h6{
+    /* display: inline-block; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: 500;
+    
+}
+.more{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display : flex;
+    justify-content: space-around;
+}
+.genre{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.genre div{
+    border: 1px solid #a0a0a0;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 0.4em;
+    font-weight: 300;
+}
+
+.ott{
+    display : flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.ott img{
+    width: 30px;
+    height: auto;
+}
+
+
+
+
+
+/* 사진 벌어지는거 */
+/* .split_container{
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.split_container .box{
+    background-color: green;
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    margin: 3rem;
+}
+.split_container .box:hover .imgBox {
+    transform: translate(-1.5rem, -1.5rem);
+}
+.split_container .box:hover .split_content {
+    transform: translate(3.5rem, 12.5rem);
+}
+.imgBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transition: all 0.5s ease-in-out;
+}
+.imgBox img{
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    resize: both;
+} */

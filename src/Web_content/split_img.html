@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+        <style type='text/css'> @import url("Web_content_Style.css"); </style>
+        <title>CSStest</title>
+    </head>
+    
+    <body>
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">WORK</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+
+        <!-- OMDb API 검색 창 -->
+        <div class="OMDB_container">
+            <div class="OMDB_search-container">
+                <input type="text" id="OMDB_movie-name" 
+                    placeholder="Enter movie name here..." 
+                    value="">
+                <button id="OMDB_search-btn">Search</button>
+            </div>
+            <div id="OMDB_result">
+                
+            </div>
+        </div>
+        <script src="key.js"></script>
+        <script src="index.js"></script>
+        <!-- 왜인지 모르겠는데 movie-name search-btn result 이거 3개는 건드리면 고장남 -->
+
+        <!-- 사진 벌어지는거 1 -->
+        <div id="movies-list"></div>
+        <script src = "List.js"></script>
+    </body>
+
+    
+</html>
+
+
+<!-- 사진 벌어지는거 -->
+        <!-- <div class="split_container">
+            <div class="box">
+                <div class="imgBox">
+                    <img 
+                        src="Cro.jpg"
+                        alt="대충 영화 썸네일?"
+                    />
+                </div>
+                <div class="split_content">
+                    <h2>
+                        <br>AakachAgrawal<br/>
+                        <span>Software Engineer</span>
+                    </h2>
+                </div>
+            </div>
+        </div> -->
